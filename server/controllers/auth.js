@@ -17,7 +17,7 @@ const signup = async (req, res) => {
 
     const serverClient = connect(api_key, api_secret, app_id)
 
-    const hashedPassword = await bcrypt.hash(password, 10)
+    const hashedPassword = await bcrypt.hash(password.toString(), 10)
 
     const token = serverClient.createUserToken(userId)
 
@@ -29,7 +29,7 @@ const signup = async (req, res) => {
   }
 }
 
-const login =  async (req, res) => {
+const login = async (req, res) => {
   try {
     const { username, password } = req.body
 
